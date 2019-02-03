@@ -23,8 +23,8 @@ public class DB extends SQLiteOpenHelper {
     public static final String TABLE_TITLE = "title";
     public static final String TABLE_ITEM = "item";
 
-    public int MAX_LISTS = 2;
-    public static int ACTUAL_LISTS;
+    public int MAX_LISTS = 1;
+    //public static int ACTUAL_LISTS = 0;
 
     boolean delete = false;
 
@@ -38,7 +38,7 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + TABLE_NAME +
                 "( '" + TABLE_INDEX + "' INTEGER  PRIMARY KEY AUTOINCREMENT, "
                 + TABLE_TITLE + " TEXT NOT NULL, "
-                + TABLE_ITEM + " TEXT )");
+                + TABLE_ITEM + " TEXT ) ");
     }
 
     @Override
@@ -50,17 +50,18 @@ public class DB extends SQLiteOpenHelper {
     public void insert(Lists list, String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-
-        if (ACTUAL_LISTS < MAX_LISTS) {
+        if (actual_lists() >= MAX_LISTS) {
             if (!delete) {
                 delete(title, db);
             }
+
+        } else {
             values.put(TABLE_TITLE, list.getTitle());
             values.put(TABLE_ITEM, list.getItem());
 
             db.insert(TABLE_NAME, null, values);
-            db.close();
         }
+        db.close();
     }
 
     public void delete(String title, SQLiteDatabase db) {
@@ -116,11 +117,19 @@ public class DB extends SQLiteOpenHelper {
         return list;
     }
 
-    public void addList() {
-        ACTUAL_LISTS = ACTUAL_LISTS + 1;
-    }
+    public int actual_lists() {
+        int num = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(" + TABLE_TITLE + ") FROM " + TABLE_NAME + ";";
 
-    public void removeList() {
-        ACTUAL_LISTS = ACTUAL_LISTS - 1;
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                num = cursor.getInt(0);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return num;
     }
 }

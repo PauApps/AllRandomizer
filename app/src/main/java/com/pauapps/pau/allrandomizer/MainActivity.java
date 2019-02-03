@@ -175,31 +175,48 @@ public class MainActivity extends Activity {
                                 AlertDialog alert12 = builder1.create();
                                 alert12.show();
                             } else {
-                                if (mInterstitialAd.isLoaded()) {
-                                    mInterstitialAd.show();
-                                } else {
-                                    Log.d("TAG", "The interstitial wasn't loaded yet.");
-                                }
-                                for (int i = 0; i < list.size(); i++) {
-                                    String item = list.get(i).toString();
-                                    db.insert(new Lists(text, item), text);
-                                }
-                                AlertDialog.Builder builder1 = new AlertDialog.Builder(title.getContext());
-                                title.setTitle("SUCCESS");
-                                builder1.setMessage("Your list " + text + " has been saved!");
-                                builder1.setCancelable(true);
+                                System.out.println(db.actual_lists());
+                                System.out.println(db.MAX_LISTS);
+                                if (db.actual_lists()<db.MAX_LISTS) {
+                                    if (mInterstitialAd.isLoaded()) {
+                                        mInterstitialAd.show();
+                                    } else {
+                                        Log.d("TAG", "The interstitial wasn't loaded yet.");
+                                    }
+                                    for (int i = 0; i < list.size(); i++) {
+                                        String item = list.get(i).toString();
+                                        db.insert(new Lists(text, item), text);
+                                    }
+                                    AlertDialog.Builder builder1 = new AlertDialog.Builder(title.getContext());
+                                    title.setTitle("SUCCESS");
+                                    builder1.setMessage("Your list " + text + " has been saved!");
+                                    builder1.setCancelable(true);
 
-                                AlertDialog alert12 = builder1.create();
-                                alert12.show();
+                                    AlertDialog alert12 = builder1.create();
+                                    alert12.show();
+                                }
+                                else{
+                                    if (mInterstitialAd.isLoaded()) {
+                                        mInterstitialAd.show();
+                                    } else {
+                                        Log.d("TAG", "The interstitial wasn't loaded yet.");
+                                    }
+                                    AlertDialog.Builder builder1 = new AlertDialog.Builder(title.getContext());
+                                    title.setTitle("FAIL");
+                                    builder1.setMessage("Your list " + text + " has not been saved! \n " +
+                                            "You don't have slots to save more lists");
+                                    builder1.setCancelable(true);
+
+                                    AlertDialog alert12 = builder1.create();
+                                    alert12.show();
+                                }
                             }
                         }
                     });
 
             title.setNegativeButton(
                     "Cancel",
-                    new DialogInterface.OnClickListener()
-
-                    {
+                    new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
@@ -207,8 +224,6 @@ public class MainActivity extends Activity {
 
             AlertDialog alert11 = title.create();
             alert11.show();
-
-            db.addList();
         }
     }
 

@@ -16,6 +16,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +29,7 @@ import java.util.List;
  * Created by Pau on 14/10/2018.
  */
 
-public class MyLists extends AppCompatActivity {
+public class MyLists extends AppCompatActivity implements RewardedVideoAdListener {
     private RecyclerView recycler;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager lManager;
@@ -35,6 +41,7 @@ public class MyLists extends AppCompatActivity {
     String title;
 
     private SharedPreferences sharedPref;
+    private RewardedVideoAd mRewardedVideoAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +54,7 @@ public class MyLists extends AppCompatActivity {
 
         TextView count = (TextView) findViewById(R.id.count);
 
-        count.setText("Lists remain: "+db.ACTUAL_LISTS+"/"+db.MAX_LISTS);
+        count.setText("Lists remain: " + db.actual_lists() + "/" + db.MAX_LISTS);
 
         recycler = (RecyclerView) findViewById(R.id.reciclador);
 
@@ -56,6 +63,17 @@ public class MyLists extends AppCompatActivity {
 
         adapter = new getLists(list, this);
         recycler.setAdapter(adapter);
+
+        MobileAds.initialize(this, "ca-app-pub-8428748101355923~9365578732");
+        // Use an activity context to get the rewarded video instance.
+        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
+        mRewardedVideoAd.setRewardedVideoAdListener(this);
+        loadRewardedVideoAd();
+    }
+
+    private void loadRewardedVideoAd() {
+        mRewardedVideoAd.loadAd("ca-app-pub-8428748101355923/1453722673",
+                new AdRequest.Builder().build());
     }
 
     public void randomize(View v) {
@@ -64,6 +82,70 @@ public class MyLists extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startService(intent);
 
+    }
+
+    public void moreSlots(View v){
+        if (mRewardedVideoAd.isLoaded()) {
+            mRewardedVideoAd.show();
+        }
+    }
+
+    @Override
+    public void onRewardedVideoAdLoaded() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+        loadRewardedVideoAd();
+    }
+
+    @Override
+    public void onRewarded(RewardItem rewardItem) {
+        db.MAX_LISTS += 1;
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int i) {
+
+    }
+
+    @Override
+    public void onRewardedVideoCompleted() {
+
+    }
+
+    @Override
+    public void onResume() {
+        mRewardedVideoAd.resume(this);
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        mRewardedVideoAd.pause(this);
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        mRewardedVideoAd.destroy(this);
+        super.onDestroy();
     }
 }
 
@@ -132,8 +214,6 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
 
                     AlertDialog alert = builder1.create();
                     alert.show();
-
-                    db.removeList();
                 }
             });
         }
