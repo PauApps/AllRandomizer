@@ -35,7 +35,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
     private RecyclerView.LayoutManager lManager;
 
     DB db = new DB(this);
-
+    Lists l = new Lists();
     List<Lists> list = new ArrayList();
 
     String title;
@@ -54,7 +54,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
         TextView count = (TextView) findViewById(R.id.count);
 
-        count.setText("Lists remain: " + db.actual_lists() + "/" + db.MAX_LISTS);
+        count.setText("Lists remain: " + db.actual_lists() + "/" + l.max);
 
         recycler = (RecyclerView) findViewById(R.id.reciclador);
 
@@ -72,7 +72,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
     }
 
     private void loadRewardedVideoAd() {
-        mRewardedVideoAd.loadAd("ca-app-pub-8428748101355923/1453722673",
+        mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
                 new AdRequest.Builder().build());
     }
 
@@ -84,7 +84,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
     }
 
-    public void moreSlots(View v){
+    public void moreSlots(View v) {
         if (mRewardedVideoAd.isLoaded()) {
             mRewardedVideoAd.show();
         }
@@ -112,7 +112,9 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
     @Override
     public void onRewarded(RewardItem rewardItem) {
-        db.MAX_LISTS += 1;
+        l.max += 1;
+        System.out.println(l.max);
+        db.updateMax(l.max);
     }
 
     @Override

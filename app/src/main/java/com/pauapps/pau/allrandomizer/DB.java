@@ -15,18 +15,20 @@ import java.util.List;
 
 public class DB extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
     public static final String DATABASE_NAME = "lists.db";
 
     public static final String TABLE_NAME = "lists";
     public static final String TABLE_INDEX = "index";
     public static final String TABLE_TITLE = "title";
     public static final String TABLE_ITEM = "item";
+    public static final String TABLE_MAX_LISTS = "max_lists";
 
-    public int MAX_LISTS = 1;
+    //public int MAX_LISTS = 1;
     //public static int ACTUAL_LISTS = 0;
 
     boolean delete = false;
+    Lists l = new Lists();
 
 
     public DB(Context context) {
@@ -38,7 +40,8 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + TABLE_NAME +
                 "( '" + TABLE_INDEX + "' INTEGER  PRIMARY KEY AUTOINCREMENT, "
                 + TABLE_TITLE + " TEXT NOT NULL, "
-                + TABLE_ITEM + " TEXT ) ");
+                + TABLE_ITEM + " TEXT,"
+                + TABLE_MAX_LISTS + "INTEGER ) ");
     }
 
     @Override
@@ -50,7 +53,7 @@ public class DB extends SQLiteOpenHelper {
     public void insert(Lists list, String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        if (actual_lists() >= MAX_LISTS) {
+        if (actual_lists() >= list.max) {
             if (!delete) {
                 delete(title, db);
             }
@@ -58,6 +61,7 @@ public class DB extends SQLiteOpenHelper {
         } else {
             values.put(TABLE_TITLE, list.getTitle());
             values.put(TABLE_ITEM, list.getItem());
+            values.put(TABLE_MAX_LISTS, list.getMax());
 
             db.insert(TABLE_NAME, null, values);
         }
@@ -131,5 +135,14 @@ public class DB extends SQLiteOpenHelper {
         }
         cursor.close();
         return num;
+    }
+
+    public void updateMax(int max) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int pastMax = max - 1;
+
+        db.execSQL("UPDATE " + TABLE_NAME + " SET " + TABLE_MAX_LISTS + " = '" + max + "'");
+        //db.update(TABLE_NAME, cv, null, null);
+        //TABLE_MAX_LISTS + "=" + pastMax
     }
 }

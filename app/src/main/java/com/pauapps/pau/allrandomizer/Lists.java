@@ -9,6 +9,7 @@ public class Lists {
     protected String name = "list";
     public String title;
     public String item;
+    public int max = 1;
 
     public Lists(String title, String item) {
         this.title = title;
@@ -17,6 +18,10 @@ public class Lists {
 
     public Lists() {
 
+    }
+
+    public int getMax() {
+        return max;
     }
 
     public String getTitle() {

@@ -176,8 +176,8 @@ public class MainActivity extends Activity {
                                 alert12.show();
                             } else {
                                 System.out.println(db.actual_lists());
-                                System.out.println(db.MAX_LISTS);
-                                if (db.actual_lists()<db.MAX_LISTS) {
+                                System.out.println(l.max);
+                                if (db.actual_lists()<l.max) {
                                     if (mInterstitialAd.isLoaded()) {
                                         mInterstitialAd.show();
                                     } else {
