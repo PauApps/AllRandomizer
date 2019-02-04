@@ -25,6 +25,8 @@ public class PrincipalPage extends AppCompatActivity {
 
         DB db = new DB(this);
 
+        System.out.println(db.actual_lists());
+
 
         // Obtain the shared Tracker instance.
         AnalyticsApplication application = (AnalyticsApplication) getApplication();

@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
     ArrayList list = new ArrayList<String>();
     DB db = new DB(this);
 
-    Lists l;
+    Lists l = new Lists();
 
 
     @Override

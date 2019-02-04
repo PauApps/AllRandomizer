@@ -40,8 +40,9 @@ public class DB extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + TABLE_NAME +
                 "( '" + TABLE_INDEX + "' INTEGER  PRIMARY KEY AUTOINCREMENT, "
                 + TABLE_TITLE + " TEXT NOT NULL, "
-                + TABLE_ITEM + " TEXT,"
-                + TABLE_MAX_LISTS + "INTEGER ) ");
+                + TABLE_ITEM + " TEXT, "
+                + TABLE_MAX_LISTS + " INTEGER );");
+
     }
 
     @Override
@@ -140,8 +141,10 @@ public class DB extends SQLiteOpenHelper {
     public void updateMax(int max) {
         SQLiteDatabase db = this.getReadableDatabase();
         int pastMax = max - 1;
+        System.out.println(max);
 
         db.execSQL("UPDATE " + TABLE_NAME + " SET " + TABLE_MAX_LISTS + " = '" + max + "'");
+        //db.execSQL("SELECT " + TABLE_MAX_LISTS + " FROM " + TABLE_NAME + " ;");
         //db.update(TABLE_NAME, cv, null, null);
         //TABLE_MAX_LISTS + "=" + pastMax
     }

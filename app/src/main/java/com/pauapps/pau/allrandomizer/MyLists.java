@@ -22,8 +22,20 @@ import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Created by Pau on 14/10/2018.
@@ -54,7 +66,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
         TextView count = (TextView) findViewById(R.id.count);
 
-        count.setText("Lists remain: " + db.actual_lists() + "/" + l.max);
+        count.setText("Lists remain: " + db.actual_lists() + "/" + l.getMax());
 
         recycler = (RecyclerView) findViewById(R.id.reciclador);
 
@@ -69,6 +81,8 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
         mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
         mRewardedVideoAd.setRewardedVideoAdListener(this);
         loadRewardedVideoAd();
+
+        System.out.println("Max lists" + l.getMax());
     }
 
     private void loadRewardedVideoAd() {
@@ -108,11 +122,30 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
     @Override
     public void onRewardedVideoAdClosed() {
         loadRewardedVideoAd();
+        finish();
+        startActivity(getIntent());
     }
 
     @Override
     public void onRewarded(RewardItem rewardItem) {
         l.max += 1;
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = null;
+
+            Document doc = builder.parse(new File("value.xml"));
+            Node integer = doc.getFirstChild();
+            Node max_lists = doc.getElementsByTagName("max_lists").item(0);
+
+            String max = max_lists.getTextContent();
+            int newMax = Integer.parseInt(max) + 1;
+            max_lists.setTextContent("" + newMax);
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        l.setMax();
         System.out.println(l.max);
         db.updateMax(l.max);
     }
