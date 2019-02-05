@@ -19,7 +19,7 @@ public class Lists {
     protected String name = "list";
     public String title;
     public String item;
-    public int max;
+    public int max = 1;
 
     public Lists(String title, String item) {
         this.title = title;
@@ -34,22 +34,6 @@ public class Lists {
         return max;
     }
 
-    public void setMax() {
-        try {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = null;
-
-            Document doc = builder.parse(new File("value.xml"));
-            Node integer = doc.getFirstChild();
-            Node max_lists = doc.getElementsByTagName("max_lists").item(0);
-
-            this.max = Integer.parseInt(max_lists.getTextContent());
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public String getTitle() {
         return title;

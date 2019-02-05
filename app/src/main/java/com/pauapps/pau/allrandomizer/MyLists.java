@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -66,7 +69,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
         TextView count = (TextView) findViewById(R.id.count);
 
-        count.setText("Lists remain: " + db.actual_lists() + "/" + l.getMax());
+        count.setText("Lists remain: " + db.actual_lists() + "/" + db.getMax());
 
         recycler = (RecyclerView) findViewById(R.id.reciclador);
 
@@ -86,7 +89,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
     }
 
     private void loadRewardedVideoAd() {
-        mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917",
+        mRewardedVideoAd.loadAd("ca-app-pub-8428748101355923/1453722673",
                 new AdRequest.Builder().build());
     }
 
@@ -106,7 +109,9 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
     @Override
     public void onRewardedVideoAdLoaded() {
-
+        Button b =(Button)findViewById(R.id.ad);
+        int color = ContextCompat.getColor(this, R.color.green);
+        b.setTextColor(color);
     }
 
     @Override
@@ -128,26 +133,8 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
     @Override
     public void onRewarded(RewardItem rewardItem) {
-        l.max += 1;
-        try {
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = null;
-
-            Document doc = builder.parse(new File("value.xml"));
-            Node integer = doc.getFirstChild();
-            Node max_lists = doc.getElementsByTagName("max_lists").item(0);
-
-            String max = max_lists.getTextContent();
-            int newMax = Integer.parseInt(max) + 1;
-            max_lists.setTextContent("" + newMax);
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        l.setMax();
-        System.out.println(l.max);
-        db.updateMax(l.max);
+        System.out.println("Max = " + db.getMax() + " New Max = " + db.getMax() + 1);
+        db.updateMax(db.getMax() + 1);
     }
 
     @Override

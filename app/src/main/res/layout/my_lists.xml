@@ -53,6 +53,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:gravity="center"
+            android:textColor="@color/red"
             android:onClick="moreSlots"
             android:text="Get more slots here!!!"
             android:textAppearance="?android:attr/textAppearanceLarge" />

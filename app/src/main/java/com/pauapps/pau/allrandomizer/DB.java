@@ -148,4 +148,24 @@ public class DB extends SQLiteOpenHelper {
         //db.update(TABLE_NAME, cv, null, null);
         //TABLE_MAX_LISTS + "=" + pastMax
     }
+
+    public int getMax() {
+        int num = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + TABLE_MAX_LISTS + " FROM " + TABLE_NAME + " LIMIT 1;";
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                num = cursor.getInt(0);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return num;
+        //db.execSQL("SELECT " + TABLE_MAX_LISTS + " FROM " + TABLE_NAME + " ;");
+        //db.update(TABLE_NAME, cv, null, null);
+        //TABLE_MAX_LISTS + "=" + pastMax
+
+    }
 }
