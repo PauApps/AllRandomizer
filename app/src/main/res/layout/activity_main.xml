@@ -81,10 +81,10 @@
                     android:id="@+id/save"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignRight="@id/done"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignEnd="@id/done"
                     android:onClick="saveList"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:src="@drawable/save_button"/>
 
                 <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
@@ -94,7 +94,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_centerInParent="true"
                     ads:adSize="BANNER"
-                    ads:adUnitId="ca-app-pub-8428748101355923/8863139563"></com.google.android.gms.ads.AdView>
+                    ads:adUnitId="ca-app-pub-8428748101355923/8863139563" />
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>

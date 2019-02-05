@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
     ListView listview;
     String text;
     TextView txt;
-    ArrayList list = new ArrayList<String>();
+    ArrayList<String> list = new ArrayList<String>();
     DB db = new DB(this);
 
     Lists l = new Lists();
@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
         String text = txt.getText().toString();
         list.add(text);
 
-        final ArrayAdapter adapter = new ArrayAdapter(this,
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
         txt.setText("");
@@ -112,7 +112,8 @@ public class MainActivity extends Activity {
                     Log.d("TAG", "The interstitial wasn't loaded yet.");
                 }
             }
-
+//TODO
+            //Share results
             int ran = r.nextInt(list.size());
             String res = list.get(ran).toString();
 
@@ -178,7 +179,7 @@ public class MainActivity extends Activity {
                                 System.out.println(db.actual_lists());
                                 System.out.println(l.max);
                                 db.actual_lists();
-                                if (db.actual_lists()<db.getMax()) {
+                                if (db.actual_lists() < db.getMax()) {
                                     if (mInterstitialAd.isLoaded()) {
                                         mInterstitialAd.show();
                                     } else {
@@ -195,8 +196,7 @@ public class MainActivity extends Activity {
 
                                     AlertDialog alert12 = builder1.create();
                                     alert12.show();
-                                }
-                                else{
+                                } else {
                                     if (mInterstitialAd.isLoaded()) {
                                         mInterstitialAd.show();
                                     } else {
@@ -231,7 +231,7 @@ public class MainActivity extends Activity {
     public void addAll(String title, Context con) {
         list.addAll(db.getItems(title, con));
 
-        final ArrayAdapter adapter = new ArrayAdapter(con,
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(con,
                 android.R.layout.simple_list_item_1, list);
         listview.setAdapter(adapter);
 
