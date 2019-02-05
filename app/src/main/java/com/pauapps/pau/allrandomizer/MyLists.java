@@ -109,7 +109,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
     @Override
     public void onRewardedVideoAdLoaded() {
-        Button b =(Button)findViewById(R.id.ad);
+        Button b = (Button) findViewById(R.id.ad);
         int color = ContextCompat.getColor(this, R.color.green);
         b.setTextColor(color);
     }
@@ -180,6 +180,7 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
         public TextView tit;
         public ImageView ran;
         public ImageView del;
+        public ImageView sen;
 
         private List<Lists> count;
         Context context;
@@ -193,6 +194,8 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
             tit = (TextView) v.findViewById(R.id.tit);
             ran = (ImageView) v.findViewById(R.id.ran);
             del = (ImageView) v.findViewById(R.id.del);
+            sen = (ImageView) v.findViewById(R.id.sen);
+
             ran.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -236,6 +239,22 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
 
                     AlertDialog alert = builder1.create();
                     alert.show();
+                }
+            });
+            sen.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    Lists getDataAdapters = count.get(position);
+                    final String title = getDataAdapters.getTitle().toString();
+
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT,
+                            "Hey! My list "+title+"\nAnd items that contains are : \n"+
+                                    db.getItems(title,context)+"\n \nMake you own lists on " +
+                                    "https://play.google.com/store/apps/details?id=com.pauapps.pau.allrandomizer");
+                    context.startActivity(Intent.createChooser(intent, "Share with"));
                 }
             });
         }

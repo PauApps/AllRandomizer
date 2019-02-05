@@ -107,7 +107,7 @@ public class DB extends SQLiteOpenHelper {
 
         DB bd = new DB(con);
         SQLiteDatabase db = bd.getReadableDatabase();
-        String query = "SELECT " + TABLE_ITEM + " FROM " + TABLE_NAME + " WHERE " +
+        String query = "SELECT '" + TABLE_ITEM + "' FROM " + TABLE_NAME + " WHERE " +
                 TABLE_TITLE + " = '" + title + "'";
 
         Cursor cursor = db.rawQuery(query, null);
@@ -140,7 +140,6 @@ public class DB extends SQLiteOpenHelper {
 
     public void updateMax(int max) {
         SQLiteDatabase db = this.getReadableDatabase();
-        int pastMax = max - 1;
         System.out.println(max);
 
         db.execSQL("UPDATE " + TABLE_NAME + " SET " + TABLE_MAX_LISTS + " = '" + max + "'");
@@ -150,7 +149,7 @@ public class DB extends SQLiteOpenHelper {
     }
 
     public int getMax() {
-        int num = 0;
+        int num = 1;
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " + TABLE_MAX_LISTS + " FROM " + TABLE_NAME + " LIMIT 1;";
 

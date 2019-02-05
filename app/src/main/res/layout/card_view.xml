@@ -42,6 +42,15 @@
                 android:layout_toLeftOf="@id/ran"
                 android:src="@drawable/trash_button" />
 
+            <ImageView
+                android:id="@+id/sen"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toLeftOf="@id/del"
+                android:src="@drawable/send_button" />
+
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>
