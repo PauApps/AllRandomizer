@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,24 +55,20 @@ public class DB extends SQLiteOpenHelper {
     public void insert(Lists list, String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        if (actual_lists() >= list.max) {
-            if (!delete) {
-                delete(title, db);
-            }
-
-        } else {
-            values.put(TABLE_TITLE, list.getTitle());
-            values.put(TABLE_ITEM, list.getItem());
-            values.put(TABLE_MAX_LISTS, list.getMax());
-
-            db.insert(TABLE_NAME, null, values);
+        if (!delete) {
+            delete(title, db);
         }
+        values.put(TABLE_TITLE, list.getTitle());
+        values.put(TABLE_ITEM, list.getItem());
+        values.put(TABLE_MAX_LISTS, getMax());
+
+        db.insert(TABLE_NAME, null, values);
         db.close();
     }
 
     public void delete(String title, SQLiteDatabase db) {
         try {
-            db.delete(TABLE_NAME, TABLE_TITLE + " = '" + title + "'", null);
+            db.delete(TABLE_NAME, TABLE_TITLE + " = \"" + title + "\"", null);
             delete = true;
         } catch (Exception e) {
 
@@ -81,7 +78,7 @@ public class DB extends SQLiteOpenHelper {
     public void delete(String title, Context con) {
         DB bd = new DB(con);
         SQLiteDatabase db = bd.getWritableDatabase();
-        db.delete(TABLE_NAME, TABLE_TITLE + " = '" + title + "'", null);
+        db.delete(TABLE_NAME, TABLE_TITLE + " = \"" + title + "\"", null);
     }
 
     public List<Lists> getLists() {
@@ -107,8 +104,8 @@ public class DB extends SQLiteOpenHelper {
 
         DB bd = new DB(con);
         SQLiteDatabase db = bd.getReadableDatabase();
-        String query = "SELECT '" + TABLE_ITEM + "' FROM " + TABLE_NAME + " WHERE " +
-                TABLE_TITLE + " = '" + title + "'";
+        String query = "SELECT \"" + TABLE_ITEM + "\" FROM " + TABLE_NAME + " WHERE " +
+                TABLE_TITLE + " =\"" + title + "\";";
 
         Cursor cursor = db.rawQuery(query, null);
 
@@ -125,7 +122,7 @@ public class DB extends SQLiteOpenHelper {
     public int actual_lists() {
         int num = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT COUNT(" + TABLE_TITLE + ") FROM " + TABLE_NAME + ";";
+        String query = "SELECT COUNT( DISTINCT \"" + TABLE_TITLE + "\") FROM " + TABLE_NAME + " GROUP BY \""+TABLE_TITLE+"\";";
 
         Cursor cursor = db.rawQuery(query, null);
 
@@ -143,28 +140,26 @@ public class DB extends SQLiteOpenHelper {
         System.out.println(max);
 
         db.execSQL("UPDATE " + TABLE_NAME + " SET " + TABLE_MAX_LISTS + " = '" + max + "'");
-        //db.execSQL("SELECT " + TABLE_MAX_LISTS + " FROM " + TABLE_NAME + " ;");
-        //db.update(TABLE_NAME, cv, null, null);
-        //TABLE_MAX_LISTS + "=" + pastMax
     }
 
     public int getMax() {
-        int num = 1;
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT " + TABLE_MAX_LISTS + " FROM " + TABLE_NAME + " LIMIT 1;";
+        int num = l.max;
+        try {
+            SQLiteDatabase db = this.getReadableDatabase();
+            String query = "SELECT " + TABLE_MAX_LISTS + " FROM \"" + TABLE_NAME + "\" LIMIT 1;";
 
-        Cursor cursor = db.rawQuery(query, null);
 
-        if (cursor.moveToFirst()) {
-            do {
-                num = cursor.getInt(0);
-            } while (cursor.moveToNext());
+            Cursor cursor = db.rawQuery(query, null);
+            if (cursor.moveToFirst()) {
+                do {
+                    num = cursor.getInt(0);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        } catch (Exception e) {
+            Log.d(e.toString(), "HA FALLAT ALGO");
         }
-        cursor.close();
         return num;
-        //db.execSQL("SELECT " + TABLE_MAX_LISTS + " FROM " + TABLE_NAME + " ;");
-        //db.update(TABLE_NAME, cv, null, null);
-        //TABLE_MAX_LISTS + "=" + pastMax
 
     }
 }

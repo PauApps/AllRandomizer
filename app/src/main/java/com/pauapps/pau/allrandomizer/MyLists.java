@@ -69,6 +69,8 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
         TextView count = (TextView) findViewById(R.id.count);
 
+        System.out.println(db.getMax());
+
         count.setText("Lists remain: " + db.actual_lists() + "/" + db.getMax());
 
         recycler = (RecyclerView) findViewById(R.id.reciclador);
@@ -85,7 +87,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
         mRewardedVideoAd.setRewardedVideoAdListener(this);
         loadRewardedVideoAd();
 
-        System.out.println("Max lists" + l.getMax());
+        System.out.println("Max lists" + db.getMax());
     }
 
     private void loadRewardedVideoAd() {
