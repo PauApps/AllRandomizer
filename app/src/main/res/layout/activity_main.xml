@@ -31,6 +31,7 @@
             <EditText
                 android:id="@+id/insertText"
                 android:layout_width="match_parent"
+                android:layout_marginRight="60dp"
                 android:layout_height="70dp"
                 android:layout_alignParentLeft="true"
                 android:theme="@style/MyEditTextTheme"
