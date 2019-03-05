@@ -3,6 +3,7 @@ package com.pauapps.pau.allrandomizer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
@@ -114,7 +115,7 @@ public class MainActivity extends Activity {
             }
 //TODO Share results
             int ran = r.nextInt(list.size());
-            String res = list.get(ran).toString();
+            final String res = list.get(ran).toString();
 
             AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
             builder1.setTitle("Your random result it's...");
@@ -138,7 +139,41 @@ public class MainActivity extends Activity {
                             dialog.cancel();
                         }
                     });
+            builder1.setNeutralButton("Send result", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    String items = "";
+                    for (int z = 0; z < list.size(); z++) {
+                        items = items + "\n" + list.get(z);
+                    }
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT,
+                            "Hey!\nI make a random process of this items: \n" + items +
+                                    "\n \nAnd random result is ... \n" + res + "\nMake you own lists on " +
+                                    "http://bit.ly/AllRandomizer");
+                    startActivity(Intent.createChooser(intent, "Share with"));
+                }
+            });
+            builder1.setIcon(R.drawable.random_button);
 
+            /*
+            sen.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    Lists getDataAdapters = count.get(position);
+                    final String title = getDataAdapters.getTitle().toString();
+
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_TEXT,
+                            "Hey! My list "+title+"\nAnd items that contains are : \n"+
+                                    db.getItems(title,context)+"\n \nMake you own lists on " +
+                                    "https://play.google.com/store/apps/details?id=com.pauapps.pau.allrandomizer");
+                    context.startActivity(Intent.createChooser(intent, "Share with"));
+                }
+            });*/
             AlertDialog alert11 = builder1.create();
             alert11.show();
         }
@@ -161,6 +196,7 @@ public class MainActivity extends Activity {
             title.setTitle("Set a title for this list");
             title.setView(input);
             title.setCancelable(true);
+            title.setIcon(R.drawable.save_button);
             title.setPositiveButton(
                     "Add list",
                     new DialogInterface.OnClickListener() {

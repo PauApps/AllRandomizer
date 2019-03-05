@@ -255,7 +255,7 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
                     intent.putExtra(Intent.EXTRA_TEXT,
                             "Hey! My list "+title+"\nAnd items that contains are : \n"+
                                     db.getItems(title,context)+"\n \nMake you own lists on " +
-                                    "https://play.google.com/store/apps/details?id=com.pauapps.pau.allrandomizer");
+                                    "http://bit.ly/AllRandomizer");
                     context.startActivity(Intent.createChooser(intent, "Share with"));
                 }
             });
