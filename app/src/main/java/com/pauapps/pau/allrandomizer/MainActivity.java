@@ -112,8 +112,7 @@ public class MainActivity extends Activity {
                     Log.d("TAG", "The interstitial wasn't loaded yet.");
                 }
             }
-//TODO
-            //Share results
+//TODO Share results
             int ran = r.nextInt(list.size());
             String res = list.get(ran).toString();
 
