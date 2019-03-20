@@ -151,7 +151,8 @@ public class MainActivity extends Activity {
                     intent.putExtra(Intent.EXTRA_TEXT,
                             "Hey!\nI make a random process of this items: \n" + items +
                                     "\n \nAnd random result is ... \n" + res + "\nMake you own lists on " +
-                                    "http://bit.ly/AllRandomizer");
+                                    "http://bit.ly/AllRandomizer \n\n " +
+                                    "Follow us on Twitter: https://twitter.com/pauapps");
                     startActivity(Intent.createChooser(intent, "Share with"));
                 }
             });
