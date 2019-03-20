@@ -158,23 +158,6 @@ public class MainActivity extends Activity {
             });
             builder1.setIcon(R.drawable.random_button);
 
-            /*
-            sen.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    Lists getDataAdapters = count.get(position);
-                    final String title = getDataAdapters.getTitle().toString();
-
-                    Intent intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("text/plain");
-                    intent.putExtra(Intent.EXTRA_TEXT,
-                            "Hey! My list "+title+"\nAnd items that contains are : \n"+
-                                    db.getItems(title,context)+"\n \nMake you own lists on " +
-                                    "https://play.google.com/store/apps/details?id=com.pauapps.pau.allrandomizer");
-                    context.startActivity(Intent.createChooser(intent, "Share with"));
-                }
-            });*/
             AlertDialog alert11 = builder1.create();
             alert11.show();
         }

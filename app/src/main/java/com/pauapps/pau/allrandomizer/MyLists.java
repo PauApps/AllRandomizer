@@ -253,8 +253,8 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     intent.putExtra(Intent.EXTRA_TEXT,
-                            "Hey! My list "+title+"\nAnd items that contains are : \n"+
-                                    db.getItems(title,context)+"\n\nMake you own lists on " +
+                            "Hey! My list " + title + "\nAnd items that contains are : \n" +
+                                    db.getItems(title, context) + "\n\nMake you own lists on " +
                                     "http://bit.ly/AllRandomizer\n\n" +
                                     "Follow us on Twitter: https://twitter.com/pauapps");
                     context.startActivity(Intent.createChooser(intent, "Share with"));
@@ -281,15 +281,6 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
     public void onBindViewHolder(final ViewLists viewHolder, int i) {
         viewHolder.tit.setText(count.get(i).getTitle());
         viewHolder.tit.setTag(i);
-        /*
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MyLists ml = new MyLists();
-                ml.position = (int) viewHolder.tit.getTag();
-            }
-        });
-        */
     }
 
     @Override
