@@ -13,8 +13,12 @@
 
     <style name="MyEditTextTheme">
         <!-- Used for the bottom line when not selected / focused -->
-        <item name="colorPrimary">#E5C183</item>
-        <item name="colorAccent">#E5C183</item>
+        <item name="colorPrimary">#3B4B85</item>
+        <item name="colorAccent">#3B4B85</item>
         <!-- colorControlActivated & colorControlHighlight use the colorAccent color by default -->
+    </style>
+
+    <style name="ListFont" parent="@android:style/Widget.ListView">
+        <item name="android:textColor">#3B4B85</item>
     </style>
 </resources>

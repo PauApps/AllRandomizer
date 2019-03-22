@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@color/fons"
     tools:context="com.pauapps.pau.allrandomizer.MainActivity">
 
     <RelativeLayout
@@ -13,11 +14,11 @@
         android:layout_marginTop="10dp">
 
         <ImageView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
-            android:layout_height="250px"
+            android:layout_height="250dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/randomize"
-            android:id="@+id/title"/>
+            android:src="@drawable/randomize" />
 
 
         <RelativeLayout
@@ -31,11 +32,12 @@
             <EditText
                 android:id="@+id/insertText"
                 android:layout_width="match_parent"
-                android:layout_marginRight="60dp"
                 android:layout_height="70dp"
                 android:layout_alignParentLeft="true"
-                android:theme="@style/MyEditTextTheme"
-                android:textSize="30dp" />
+                android:layout_marginRight="60dp"
+                android:textColor="@color/basic"
+                android:textSize="30dp"
+                android:theme="@style/MyEditTextTheme" />
 
             <Button
                 android:id="@+id/button"
@@ -44,9 +46,9 @@
                 android:layout_alignEnd="@+id/insertText"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/plus_button"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/add_button_random"
                 android:onClick="addItem" />
         </RelativeLayout>
 
@@ -59,33 +61,34 @@
             <ListView
                 android:id="@+id/listview"
                 android:layout_width="match_parent"
-                android:layout_height="250dp" />
+                android:layout_height="200dp"
+                android:theme="@style/ListFont" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@id/listview">
+                android:layout_below="@id/listview"
+                android:layout_alignParentBottom="true">
 
                 <ImageView
                     android:id="@+id/done"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentTop="true"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentLeft="true"
-                    android:onClick="randomize"
+                    android:layout_alignParentTop="true"
                     android:layout_marginLeft="20dp"
-                    android:src="@drawable/random_button"/>
+                    android:onClick="randomize"
+                    android:src="@drawable/random_button" />
 
                 <ImageView
                     android:id="@+id/save"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentEnd="true"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignEnd="@id/done"
-                    android:onClick="saveList"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginEnd="20dp"
-                    android:src="@drawable/save_button"/>
+                    android:onClick="saveList"
+                    android:src="@drawable/save_button" />
 
                 <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/adView"

@@ -3,52 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/fons">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             app:srcCompat="@drawable/allrandomizer" />
 
-
-        <Button
+        <ImageButton
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView"
             android:layout_centerHorizontal="true"
             android:onClick="randomize"
-            android:text="RANDOMIZE!"
-            android:textSize="30dp" />
+            android:src="@drawable/randomize_button_menu" />
 
-        <Button
+        <ImageButton
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/button2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:onClick="list"
-            android:text="My LIST"
-            android:textSize="30dp" />
-        <!--
-                <Button
-                    android:id="@+id/button4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/button3"
-                    android:layout_marginTop="100dp"
-                    android:text="About App"
-                    android:textSize="20dp" />
-                -->
+            android:src="@drawable/mylist_button_menu" />
 
         <TextView
             android:id="@+id/textView"
@@ -56,7 +43,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:text="Develp by PauApps" />
+
+        <TextView
+            android:id="@+id/textViewA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:text="Designed by PauApps" />
+            android:text="Designed by Albert Ferrer" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
