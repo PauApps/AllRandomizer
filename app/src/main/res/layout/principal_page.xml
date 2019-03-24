@@ -20,20 +20,23 @@
 
         <ImageButton
             android:id="@+id/button2"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imageView"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@color/fons"
             android:onClick="randomize"
             android:src="@drawable/randomize_button_menu" />
 
         <ImageButton
             android:id="@+id/button3"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/button2"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
+            android:background="@color/fons"
             android:onClick="list"
             android:src="@drawable/mylist_button_menu" />
 

@@ -27,13 +27,13 @@
 
             <ImageView
                 android:id="@+id/ran"
-                android:layout_width="50dp"
-                android:layout_height="60dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="40dp"
                 android:src="@drawable/random_button_list" />
-
+            <!--30-->
             <ImageView
                 android:id="@+id/del"
                 android:layout_width="30dp"
