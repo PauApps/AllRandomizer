@@ -11,7 +11,7 @@ import com.google.android.gms.analytics.Tracker;
 
 /**
  * Created by Pau on 25/9/2018.
- * test
+ * Master branch
  */
 
 public class PrincipalPage extends AppCompatActivity {
