@@ -156,7 +156,7 @@ public class MainActivity extends Activity {
                     startActivity(Intent.createChooser(intent, "Share with"));
                 }
             });
-            builder1.setIcon(R.drawable.random_button);
+            builder1.setIcon(R.drawable.random_button); //Icon
 
             AlertDialog alert11 = builder1.create();
             alert11.show();
