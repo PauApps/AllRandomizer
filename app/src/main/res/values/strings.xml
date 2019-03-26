@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">All Randomizer</string>
+    <string name="select_type_to_randomize">Select type to Randomize!</string>
+    <string name="text_lists">Text Lists</string>
+    <string name="numbers">Numbers</string>
 </resources>
