@@ -37,7 +37,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:background="@color/fons"
-            android:onClick="list"
+            android:onClick="options"
             android:src="@drawable/mylist_button_menu" />
 
         <TextView
