@@ -3,4 +3,8 @@
     <string name="select_type_to_randomize">Select type to Randomize!</string>
     <string name="text_lists">Text Lists</string>
     <string name="numbers">Numbers</string>
+    <string name="get_more_slots_here">Get more slots here!!!</string>
+    <string name="_0">0</string>
+    <string name="develp_by_pauapps">Develp by PauApps</string>
+    <string name="designed_by_albert_ferrer">Designed by Albert Ferrer</string>
 </resources>

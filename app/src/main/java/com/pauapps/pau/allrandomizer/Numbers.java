@@ -15,6 +15,8 @@ public class Numbers extends Activity {
         setContentView(R.layout.numbers);
 
         number = (EditText) findViewById(R.id.number);
+
+        //TODO Posar iniciador d'anuncis
     }
 
     public void sum(View v) {

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fons">
@@ -59,7 +58,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp"
-            android:text="Develp by PauApps" />
+            android:text="@string/develp_by_pauapps" />
 
         <TextView
             android:id="@+id/textViewA"
@@ -68,6 +67,6 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:text="Designed by Albert Ferrer" />
+            android:text="@string/designed_by_albert_ferrer" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

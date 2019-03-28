@@ -58,7 +58,7 @@
             android:layout_marginLeft="10dp"
             android:gravity="center"
             android:onClick="moreSlots"
-            android:text="Get more slots here!!!"
+            android:text="@string/get_more_slots_here"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/red" />
     </RelativeLayout>

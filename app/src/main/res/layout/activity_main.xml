@@ -45,9 +45,8 @@
                 android:layout_height="50dp"
                 android:layout_alignEnd="@+id/insertText"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/add_button_random"
                 android:onClick="addItem" />
         </RelativeLayout>
@@ -75,9 +74,8 @@
                     android:id="@+id/done"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:onClick="randomize"
                     android:src="@drawable/random_button" />
 
