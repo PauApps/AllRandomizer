@@ -22,7 +22,7 @@ import com.pauapps.pau.allrandomizer.Utils.MyLists;
  * 1.4 branch
  */
 
-public class PrincipalActivity extends AppCompatActivity {
+public class PrincipalPage extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private Tracker mTracker;
     int option = 0;
@@ -40,6 +40,8 @@ public class PrincipalActivity extends AppCompatActivity {
 
     public void randomize(View v) {
         String name = "randomize";
+        //TODO fer que segons lo que triis se posarà una opció o una altra
+        startActivity(new Intent(this, Numbers.class));
         System.out.println(option);
         switch (option) {
             case 0:
