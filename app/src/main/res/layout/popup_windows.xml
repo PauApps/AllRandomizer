@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/fons3"
-    tools:context="com.pauapps.pau.allrandomizer.Activities.PrincipalActivity">
+    android:background="@color/fons3">
 
     <RadioGroup
+        android:id="@+id/radiogroup"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/radiogroup">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
@@ -19,10 +17,10 @@
             android:textSize="@dimen/popup_title" />
 
         <RadioButton
-            android:id="@+id/text"
+            android:id="@+id/lists"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
+            android:onClick="selectedOption"
             android:text="@string/text_lists"
             android:textColor="@color/basic"
             android:textSize="@dimen/popup_title" />
@@ -31,6 +29,7 @@
             android:id="@+id/numbers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="selectedOption"
             android:text="@string/numbers"
             android:textColor="@color/basic"
             android:textSize="@dimen/popup_title" />

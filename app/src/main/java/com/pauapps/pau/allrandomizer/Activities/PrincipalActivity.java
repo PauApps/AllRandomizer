@@ -1,4 +1,4 @@
-package com.pauapps.pau.allrandomizer.Activities;
+package com.pauapps.pau.allrandomizer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,29 +14,21 @@ import android.widget.RadioGroup;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.pauapps.pau.allrandomizer.AnalyticsApplication;
-import com.pauapps.pau.allrandomizer.Utils.DB;
-import com.pauapps.pau.allrandomizer.Utils.MyLists;
-import com.pauapps.pau.allrandomizer.R;
 
 /**
  * Created by Pau on 25/9/2018.
  * 1.4 branch
  */
 
-public class PrincipalActivity extends AppCompatActivity {
-    private static final String TAG = "ListsActivity";
+public class PrincipalPage extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     private Tracker mTracker;
+    int option = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal_page);
-
-        DB db = new DB(this);
-
-        System.out.println(db.actual_lists());
-
 
         // Obtain the shared Tracker instance.
         AnalyticsApplication application = (AnalyticsApplication) getApplication();
@@ -46,20 +38,17 @@ public class PrincipalActivity extends AppCompatActivity {
 
     public void randomize(View v) {
         String name = "randomize";
-        int option;
-        RadioGroup group = (RadioGroup) findViewById(R.id.radiogroup);
-        option = group.getCheckedRadioButtonId();
-        switch (option){
-            case 1:
+        System.out.println(option);
+        switch (option) {
+            case 0:
                 //Lists select
-                startActivity(new Intent(this, ListsActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
                 break;
-            case 2:
+            case 1:
                 //NumbersActivity select
-                startActivity(new Intent(this, NumbersActivity.class));
+                startActivity(new Intent(this, Numbers.class));
                 break;
         }
-        //TODO fer que segons lo que triis se posarà una opció o una altra
         Log.i(TAG, "Setting screen name: " + name);
         mTracker.setScreenName("Image~" + name);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
@@ -94,5 +83,17 @@ public class PrincipalActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public void selectedOption(View v) {
+        switch (v.getId()) {
+            case R.id.lists:
+                option = 0;
+                break;
+            case R.id.numbers:
+                System.out.println("Number");
+                option = 1;
+                break;
+        }
     }
 }
