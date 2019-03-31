@@ -41,7 +41,8 @@ public class PrincipalPage extends AppCompatActivity {
 
     public void randomize(View v) {
         String name = "randomize";
-        startActivity(new Intent(this, MainActivity.class));
+        //TODO fer que segons lo que triis se posarà una opció o una altra
+        startActivity(new Intent(this, Numbers.class));
         Log.i(TAG, "Setting screen name: " + name);
         mTracker.setScreenName("Image~" + name);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());

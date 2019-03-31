@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:onClick="sum"
                 android:src="@drawable/random_button" />
 
@@ -47,6 +47,7 @@
                 android:layout_marginTop="40dp"
                 android:ems="10"
                 android:inputType="number"
+                android:gravity="center"
                 android:text="@string/_0" />
 
             <ImageButton
@@ -55,6 +56,16 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/number"
                 android:onClick="res"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/random_button" />
+
+            <ImageButton
+                android:id="@+id/rand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/res_number"
+                android:onClick="rand"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40dp"
                 android:src="@drawable/random_button" />
