@@ -1,4 +1,4 @@
-package com.pauapps.pau.allrandomizer;
+package com.pauapps.pau.allrandomizer.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,9 @@ import android.widget.RadioGroup;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.pauapps.pau.allrandomizer.AnalyticsApplication;
+import com.pauapps.pau.allrandomizer.R;
+import com.pauapps.pau.allrandomizer.Utils.MyLists;
 import com.pauapps.pau.allrandomizer.AnalyticsApplication;
 import com.pauapps.pau.allrandomizer.Utils.DB;
 import com.pauapps.pau.allrandomizer.Utils.MyLists;
