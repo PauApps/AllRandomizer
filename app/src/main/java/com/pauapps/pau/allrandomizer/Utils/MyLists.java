@@ -1,4 +1,4 @@
-package com.pauapps.pau.allrandomizer;
+package com.pauapps.pau.allrandomizer.Utils;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,22 +23,11 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
+import com.pauapps.pau.allrandomizer.Activities.ListsActivity;
+import com.pauapps.pau.allrandomizer.Activities.PrincipalActivity;
+import com.pauapps.pau.allrandomizer.R;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 /**
  * Created by Pau on 14/10/2018.
@@ -51,7 +40,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
     DB db = new DB(this);
     Lists l = new Lists();
-    List<Lists> list = new ArrayList();
+    java.util.List list = new ArrayList();
 
     String title;
 
@@ -96,7 +85,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
     }
 
     public void randomize(View v) {
-        Intent intent = new Intent(this, PrincipalPage.class);
+        Intent intent = new Intent(this, PrincipalActivity.class);
         intent.putExtra("title", title);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startService(intent);
@@ -174,7 +163,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 }
 
 class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
-    private List<Lists> count;
+    private java.util.List count;
     Context context;
 
     public static class ViewLists extends RecyclerView.ViewHolder {
@@ -184,12 +173,12 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
         public ImageView del;
         public ImageView sen;
 
-        private List<Lists> count;
+        private java.util.List count;
         Context context;
 
         DB db = new DB(context);
 
-        public ViewLists(View v, final Context context, final List<Lists> count) {
+        public ViewLists(View v, final Context context, final java.util.List count) {
             super(v);
             this.count = count;
             this.context = context;
@@ -203,7 +192,7 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     Lists getDataAdapters = count.get(position);
-                    Intent intent = new Intent(context, MainActivity.class);
+                    Intent intent = new Intent(context, ListsActivity.class);
                     intent.putExtra("title", getDataAdapters.getTitle());
                     context.startActivity(intent);
                 }
@@ -217,7 +206,7 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                     builder1.setTitle("Attention!");
-                    builder1.setMessage("List " + title + " will be lost!");
+                    builder1.setMessage("ListsActivity " + title + " will be lost!");
                     builder1.setCancelable(true);
 
                     builder1.setPositiveButton(
@@ -225,7 +214,7 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     db.delete(title, context);
-                                    Intent intent = new Intent(context, PrincipalPage.class);
+                                    Intent intent = new Intent(context, PrincipalActivity.class);
                                     context.startActivity(intent);
                                     dialog.cancel();
                                 }
@@ -263,7 +252,7 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
         }
     }
 
-    public getLists(List<Lists> count, Context context) {
+    public getLists(java.util.List count, Context context) {
         super();
         this.count = count;
         this.context = context;

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".PrincipalPage"
+            android:name=".Activities.PrincipalActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -21,15 +21,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.ListsActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".MyLists"
+            android:name=".Utils.MyLists"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".Numbers"
+            android:name=".Activities.NumbersActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"></activity>
         <meta-data

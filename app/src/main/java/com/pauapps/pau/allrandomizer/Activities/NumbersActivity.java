@@ -1,13 +1,15 @@
-package com.pauapps.pau.allrandomizer;
+package com.pauapps.pau.allrandomizer.Activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.pauapps.pau.allrandomizer.R;
+
 import java.util.Random;
 
-public class Numbers extends Activity {
+public class NumbersActivity extends Activity {
 
     EditText number;
     int num;

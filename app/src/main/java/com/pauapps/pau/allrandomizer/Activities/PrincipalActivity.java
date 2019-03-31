@@ -1,4 +1,4 @@
-package com.pauapps.pau.allrandomizer;
+package com.pauapps.pau.allrandomizer.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,17 +10,22 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RadioGroup;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.pauapps.pau.allrandomizer.AnalyticsApplication;
+import com.pauapps.pau.allrandomizer.Utils.DB;
+import com.pauapps.pau.allrandomizer.Utils.MyLists;
+import com.pauapps.pau.allrandomizer.R;
 
 /**
  * Created by Pau on 25/9/2018.
  * 1.4 branch
  */
 
-public class PrincipalPage extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+public class PrincipalActivity extends AppCompatActivity {
+    private static final String TAG = "ListsActivity";
     private Tracker mTracker;
 
     @Override
@@ -41,8 +46,20 @@ public class PrincipalPage extends AppCompatActivity {
 
     public void randomize(View v) {
         String name = "randomize";
+        int option;
+        RadioGroup group = (RadioGroup) findViewById(R.id.radiogroup);
+        option = group.getCheckedRadioButtonId();
+        switch (option){
+            case 1:
+                //Lists select
+                startActivity(new Intent(this, ListsActivity.class));
+                break;
+            case 2:
+                //NumbersActivity select
+                startActivity(new Intent(this, NumbersActivity.class));
+                break;
+        }
         //TODO fer que segons lo que triis se posarà una opció o una altra
-        startActivity(new Intent(this, Numbers.class));
         Log.i(TAG, "Setting screen name: " + name);
         mTracker.setScreenName("Image~" + name);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());

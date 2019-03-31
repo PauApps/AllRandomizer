@@ -1,4 +1,4 @@
-package com.pauapps.pau.allrandomizer;
+package com.pauapps.pau.allrandomizer.Utils;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;

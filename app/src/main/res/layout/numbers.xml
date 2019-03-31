@@ -6,7 +6,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/fons"
-    tools:context="com.pauapps.pau.allrandomizer.Numbers">
+    tools:context="com.pauapps.pau.allrandomizer.Activities.NumbersActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

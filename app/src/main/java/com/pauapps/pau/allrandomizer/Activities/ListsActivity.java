@@ -1,4 +1,4 @@
-package com.pauapps.pau.allrandomizer;
+package com.pauapps.pau.allrandomizer.Activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,11 +21,15 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.pauapps.pau.allrandomizer.AnalyticsApplication;
+import com.pauapps.pau.allrandomizer.Utils.DB;
+import com.pauapps.pau.allrandomizer.Utils.Lists;
+import com.pauapps.pau.allrandomizer.R;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MainActivity extends Activity {
+public class ListsActivity extends Activity {
     private Tracker mTracker;
     private InterstitialAd mInterstitialAd;
 

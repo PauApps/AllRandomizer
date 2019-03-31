@@ -1,4 +1,4 @@
-package com.pauapps.pau.allrandomizer;
+package com.pauapps.pau.allrandomizer.Utils;
 
 import android.content.ContentValues;
 import android.content.Context;
