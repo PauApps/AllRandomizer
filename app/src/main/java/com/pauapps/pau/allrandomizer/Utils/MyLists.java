@@ -28,6 +28,7 @@ import com.pauapps.pau.allrandomizer.Activities.PrincipalActivity;
 import com.pauapps.pau.allrandomizer.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Pau on 14/10/2018.
@@ -40,7 +41,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
     DB db = new DB(this);
     Lists l = new Lists();
-    java.util.List list = new ArrayList();
+    List<Lists> list = new ArrayList();
 
     String title;
 
@@ -163,7 +164,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 }
 
 class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
-    private java.util.List count;
+    private List<Lists> count;
     Context context;
 
     public static class ViewLists extends RecyclerView.ViewHolder {
@@ -173,12 +174,12 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
         public ImageView del;
         public ImageView sen;
 
-        private java.util.List count;
+        private List<Lists> count;
         Context context;
 
         DB db = new DB(context);
 
-        public ViewLists(View v, final Context context, final java.util.List count) {
+        public ViewLists(View v, final Context context, final List<Lists> count) {
             super(v);
             this.count = count;
             this.context = context;
@@ -252,7 +253,7 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
         }
     }
 
-    public getLists(java.util.List count, Context context) {
+    public getLists(List<Lists> count, Context context) {
         super();
         this.count = count;
         this.context = context;

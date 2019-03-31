@@ -1,4 +1,4 @@
-package com.pauapps.pau.allrandomizer;
+package com.pauapps.pau.allrandomizer.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,17 +10,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.RadioGroup;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.pauapps.pau.allrandomizer.AnalyticsApplication;
+import com.pauapps.pau.allrandomizer.R;
+import com.pauapps.pau.allrandomizer.Utils.MyLists;
 
 /**
  * Created by Pau on 25/9/2018.
  * 1.4 branch
  */
 
-public class PrincipalPage extends AppCompatActivity {
+public class PrincipalActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private Tracker mTracker;
     int option = 0;
@@ -42,11 +44,11 @@ public class PrincipalPage extends AppCompatActivity {
         switch (option) {
             case 0:
                 //Lists select
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, ListsActivity.class));
                 break;
             case 1:
                 //NumbersActivity select
-                startActivity(new Intent(this, Numbers.class));
+                startActivity(new Intent(this, NumbersActivity.class));
                 break;
         }
         Log.i(TAG, "Setting screen name: " + name);
