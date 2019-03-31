@@ -29,11 +29,6 @@ import com.pauapps.pau.allrandomizer.Activities.PrincipalActivity;
 import com.pauapps.pau.allrandomizer.R;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 import static com.pauapps.pau.allrandomizer.R.drawable.si_new_list_button;
 
@@ -48,7 +43,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
     DB db = new DB(this);
     Lists l = new Lists();
-    List<Lists> list = new ArrayList();
+    java.util.List list = new ArrayList();
 
     String title;
 
@@ -170,7 +165,7 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 }
 
 class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
-    private List<Lists> count;
+    private java.util.List count;
     Context context;
 
     public static class ViewLists extends RecyclerView.ViewHolder {
@@ -180,12 +175,12 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
         public ImageView del;
         public ImageView sen;
 
-        private List<Lists> count;
+        private java.util.List count;
         Context context;
 
         DB db = new DB(context);
 
-        public ViewLists(View v, final Context context, final List<Lists> count) {
+        public ViewLists(View v, final Context context, final java.util.List count) {
             super(v);
             this.count = count;
             this.context = context;
@@ -213,7 +208,7 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                     builder1.setTitle("Attention!");
-                    builder1.setMessage("List " + title + " will be lost!");
+                    builder1.setMessage("ListsActivity " + title + " will be lost!");
                     builder1.setCancelable(true);
 
                     builder1.setPositiveButton(
@@ -259,7 +254,7 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
         }
     }
 
-    public getLists(List<Lists> count, Context context) {
+    public getLists(java.util.List count, Context context) {
         super();
         this.count = count;
         this.context = context;

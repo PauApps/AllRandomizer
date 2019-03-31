@@ -10,9 +10,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RadioGroup;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.pauapps.pau.allrandomizer.AnalyticsApplication;
+import com.pauapps.pau.allrandomizer.Utils.DB;
+import com.pauapps.pau.allrandomizer.Utils.MyLists;
+import com.pauapps.pau.allrandomizer.R;
 import com.pauapps.pau.allrandomizer.AnalyticsApplication;
 import com.pauapps.pau.allrandomizer.R;
 import com.pauapps.pau.allrandomizer.Utils.MyLists;
@@ -32,6 +37,11 @@ public class PrincipalPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal_page);
 
+        DB db = new DB(this);
+
+        System.out.println(db.actual_lists());
+
+
         // Obtain the shared Tracker instance.
         AnalyticsApplication application = (AnalyticsApplication) getApplication();
         mTracker = application.getDefaultTracker();
@@ -40,6 +50,19 @@ public class PrincipalPage extends AppCompatActivity {
 
     public void randomize(View v) {
         String name = "randomize";
+        int option;
+        RadioGroup group = (RadioGroup) findViewById(R.id.radiogroup);
+        option = group.getCheckedRadioButtonId();
+        switch (option){
+            case 1:
+                //Lists select
+                startActivity(new Intent(this, ListsActivity.class));
+                break;
+            case 2:
+                //NumbersActivity select
+                startActivity(new Intent(this, NumbersActivity.class));
+                break;
+        }
         //TODO fer que segons lo que triis se posarà una opció o una altra
         startActivity(new Intent(this, Numbers.class));
         System.out.println(option);
