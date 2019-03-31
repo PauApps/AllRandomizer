@@ -1,4 +1,4 @@
-package com.pauapps.pau.allrandomizer.Activities;
+package com.pauapps.pau.allrandomizer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -64,18 +64,6 @@ public class PrincipalPage extends AppCompatActivity {
                 break;
         }
         //TODO fer que segons lo que triis se posarà una opció o una altra
-        startActivity(new Intent(this, Numbers.class));
-        System.out.println(option);
-        switch (option) {
-            case 0:
-                //Lists select
-                startActivity(new Intent(this, ListsActivity.class));
-                break;
-            case 1:
-                //NumbersActivity select
-                startActivity(new Intent(this, NumbersActivity.class));
-                break;
-        }
         Log.i(TAG, "Setting screen name: " + name);
         mTracker.setScreenName("Image~" + name);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
