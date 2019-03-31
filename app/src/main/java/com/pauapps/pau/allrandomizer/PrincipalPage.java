@@ -14,6 +14,10 @@ import com.google.android.gms.analytics.Tracker;
  * Master branch
  */
 
+//TODO To update:
+    // - Change icons Mylist
+    // - Change icons PrincipalPage
+    // - Change icons MainActivity
 public class PrincipalPage extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private Tracker mTracker;
