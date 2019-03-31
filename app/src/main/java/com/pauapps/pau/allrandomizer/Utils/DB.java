@@ -122,7 +122,7 @@ public class DB extends SQLiteOpenHelper {
     public int actual_lists() {
         int num = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT COUNT( DISTINCT \"" + TABLE_TITLE + "\") FROM " + TABLE_NAME + " GROUP BY \"" + TABLE_TITLE + "\";";
+        String query = "SELECT COUNT( DISTINCT \"" + TABLE_TITLE + "\") FROM " + TABLE_NAME + ";";
 
         Cursor cursor = db.rawQuery(query, null);
 
