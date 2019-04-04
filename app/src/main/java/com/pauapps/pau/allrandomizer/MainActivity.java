@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -122,8 +125,9 @@ public class MainActivity extends Activity {
             builder1.setMessage(res);
             builder1.setCancelable(true);
 
+            //builder1.setPositiveButtonIcon(this.getResources().getDrawable(R.drawable.clean_button));
             builder1.setPositiveButton(
-                    "Clean list",
+                    "clean list",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             list.clear();
@@ -131,15 +135,16 @@ public class MainActivity extends Activity {
                             dialog.cancel();
                         }
                     });
-
+            //builder1.setNegativeButtonIcon(this.getResources().getDrawable(R.drawable.cancel_button));
             builder1.setNegativeButton(
-                    "Cancel",
+                    "cancel",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
                     });
-            builder1.setNeutralButton("Send result", new DialogInterface.OnClickListener() {
+            //builder1.setNeutralButtonIcon(this.getResources().getDrawable(R.drawable.send_button));
+            builder1.setNeutralButton("send", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     String items = "";
@@ -156,11 +161,12 @@ public class MainActivity extends Activity {
                     startActivity(Intent.createChooser(intent, "Share with"));
                 }
             });
-            builder1.setIcon(R.drawable.random_button); //Icon
+            //builder1.setIcon(R.drawable.random_button); //Icon
 
             AlertDialog alert11 = builder1.create();
             alert11.show();
         }
+
     }
 
     public void saveList(View v) {
@@ -180,7 +186,7 @@ public class MainActivity extends Activity {
             title.setTitle("Set a title for this list");
             title.setView(input);
             title.setCancelable(true);
-            title.setIcon(R.drawable.save_button);
+            //title.setIcon(R.drawable.save_button);
             title.setPositiveButton(
                     "Add list",
                     new DialogInterface.OnClickListener() {
@@ -223,7 +229,7 @@ public class MainActivity extends Activity {
                                     }
                                     AlertDialog.Builder builder1 = new AlertDialog.Builder(title.getContext());
                                     title.setTitle("FAIL");
-                                    builder1.setMessage("Your list " + text + " has not been saved! \n " +
+                                    builder1.setMessage("Your list " + text + " has not been saved! \n" +
                                             "You don't have slots to save more lists");
                                     builder1.setCancelable(true);
 

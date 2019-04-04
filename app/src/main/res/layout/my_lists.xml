@@ -44,13 +44,13 @@
         android:scrollbars="vertical" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
         <ImageButton
             android:id="@+id/ad"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -59,7 +59,7 @@
             android:background="@color/fons"
             android:gravity="center"
             android:onClick="moreSlots"
-            android:src="@drawable/no_newLlst_button_list_menu"
+            android:src="@drawable/no_new_list_button_list_menu"
             android:layout_marginBottom="10dp"/>
     </RelativeLayout>
 </RelativeLayout>
