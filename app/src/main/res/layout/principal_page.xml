@@ -27,7 +27,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/fons"
             android:onClick="randomize"
-            android:src="@drawable/randomize_button_menu" />
+            android:src="@drawable/randomize_button_menu_new" />
 
         <ImageButton
             android:id="@+id/button3"
@@ -38,7 +38,7 @@
             android:layout_marginTop="30dp"
             android:background="@color/fons"
             android:onClick="list"
-            android:src="@drawable/mylist_button_menu" />
+            android:src="@drawable/mylist_button_menu_new" />
 
         <TextView
             android:id="@+id/textView"

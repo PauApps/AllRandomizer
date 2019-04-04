@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
-        <Button
+        <ImageButton
             android:id="@+id/ad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,10 +56,10 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+            android:background="@color/fons"
             android:gravity="center"
             android:onClick="moreSlots"
-            android:text="Get more slots here!!!"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/red" />
+            android:src="@drawable/no_newLlst_button_list_menu"
+            android:layout_marginBottom="10dp"/>
     </RelativeLayout>
 </RelativeLayout>
