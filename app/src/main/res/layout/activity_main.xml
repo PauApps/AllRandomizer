@@ -61,15 +61,16 @@
             <ListView
                 android:id="@+id/listview"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="250dp"
                 android:theme="@style/ListFont" />
 
             <RelativeLayout
+                android:id="@+id/buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/listview"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp">
 
                 <ImageView
                     android:id="@+id/done"
@@ -96,7 +97,7 @@
                 android:id="@+id/ad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/listview"
+                android:layout_below="@id/buttons"
                 android:layout_alignParentBottom="true">
 
                 <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
