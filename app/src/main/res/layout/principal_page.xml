@@ -47,7 +47,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp"
-            android:text="Develp by PauApps" />
+            android:text="@string/develp_by_pauapps" />
 
         <TextView
             android:id="@+id/textViewA"
@@ -56,6 +56,6 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:text="Designed by Albert Ferrer" />
+            android:text="@string/designed_by_albert_ferrer" />
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
