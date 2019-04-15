@@ -17,20 +17,13 @@ import com.google.android.gms.analytics.Tracker;
 import com.pauapps.pau.allrandomizer.AnalyticsApplication;
 import com.pauapps.pau.allrandomizer.R;
 import com.pauapps.pau.allrandomizer.Utils.MyLists;
-import com.pauapps.pau.allrandomizer.AnalyticsApplication;
 import com.pauapps.pau.allrandomizer.Utils.DB;
-import com.pauapps.pau.allrandomizer.Utils.MyLists;
-import com.pauapps.pau.allrandomizer.R;
-import com.pauapps.pau.allrandomizer.AnalyticsApplication;
-import com.pauapps.pau.allrandomizer.R;
-import com.pauapps.pau.allrandomizer.Utils.MyLists;
-
 /**
  * Created by Pau on 25/9/2018.
  * 1.4 branch
  */
 
-public class PrincipalPage extends AppCompatActivity {
+public class PrincipalActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private Tracker mTracker;
     int option = 0;
