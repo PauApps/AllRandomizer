@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">All Randomizer</string>
+    <string name="title">title</string>
+    <string name="random">random</string>
+    <string name="save">save</string>
+    <string name="develp_by_pauapps">Develop by PauApps</string>
+    <string name="designed_by_albert_ferrer">Designed by Albert Ferrer</string>
     <string name="select_type_to_randomize">Select type to Randomize!</string>
     <string name="text_lists">Text Lists</string>
     <string name="numbers">Numbers</string>

@@ -44,22 +44,22 @@
         android:scrollbars="vertical" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
-        <Button
+        <ImageButton
             android:id="@+id/ad"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+            android:background="@color/fons"
             android:gravity="center"
             android:onClick="moreSlots"
-            android:text="@string/get_more_slots_here"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/red" />
+            android:src="@drawable/no_new_list_button_list_menu"
+            android:layout_marginBottom="10dp"/>
     </RelativeLayout>
 </RelativeLayout>

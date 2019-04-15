@@ -6,13 +6,18 @@
     android:background="@color/fons">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_height="250dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dp"
             app:srcCompat="@drawable/allrandomizer" />
@@ -37,7 +42,7 @@
             android:layout_marginTop="20dp"
             android:background="@color/fons"
             android:onClick="randomize"
-            android:src="@drawable/randomize_button_menu" />
+            android:src="@drawable/randomize_button_menu_new" />
 
         <ImageButton
             android:id="@+id/button3"
@@ -48,7 +53,7 @@
             android:layout_marginTop="30dp"
             android:background="@color/fons"
             android:onClick="list"
-            android:src="@drawable/mylist_button_menu" />
+            android:src="@drawable/mylist_button_menu_new" />
 
 
         <TextView

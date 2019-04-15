@@ -129,6 +129,7 @@ public class DB extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 num = cursor.getInt(0);
+                System.out.println("MIRAR" + cursor.getString(0));
             } while (cursor.moveToNext());
         }
         cursor.close();

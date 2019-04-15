@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +30,12 @@ import com.pauapps.pau.allrandomizer.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import static com.pauapps.pau.allrandomizer.R.drawable.si_new_list_button;
 
 /**
  * Created by Pau on 14/10/2018.
@@ -101,9 +108,8 @@ public class MyLists extends AppCompatActivity implements RewardedVideoAdListene
 
     @Override
     public void onRewardedVideoAdLoaded() {
-        Button b = (Button) findViewById(R.id.ad);
-        int color = ContextCompat.getColor(this, R.color.green);
-        b.setTextColor(color);
+        ImageButton b = findViewById(R.id.ad);
+        b.setImageResource(R.drawable.si_new_list_button);
     }
 
     @Override
@@ -183,10 +189,10 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
             super(v);
             this.count = count;
             this.context = context;
-            tit = (TextView) v.findViewById(R.id.tit);
-            ran = (ImageView) v.findViewById(R.id.ran);
-            del = (ImageView) v.findViewById(R.id.del);
-            sen = (ImageView) v.findViewById(R.id.sen);
+            tit = v.findViewById(R.id.tit);
+            ran = v.findViewById(R.id.ran);
+            del = v.findViewById(R.id.del);
+            sen = v.findViewById(R.id.sen);
 
             ran.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -207,7 +213,7 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                     builder1.setTitle("Attention!");
-                    builder1.setMessage("ListsActivity " + title + " will be lost!");
+                    builder1.setMessage("List " + title + " will be lost!");
                     builder1.setCancelable(true);
 
                     builder1.setPositiveButton(
@@ -243,7 +249,7 @@ class getLists extends RecyclerView.Adapter<getLists.ViewLists> {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     intent.putExtra(Intent.EXTRA_TEXT,
-                            "Hey! My list " + title + "\nAnd items that contains are : \n" +
+                            "Hey! My list " + title + "\nAnd items that contains are: \n" +
                                     db.getItems(title, context) + "\n\nMake you own lists on " +
                                     "http://bit.ly/AllRandomizer\n\n" +
                                     "Follow us on Twitter: https://twitter.com/pauapps");
