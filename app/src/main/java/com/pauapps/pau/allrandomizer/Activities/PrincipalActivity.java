@@ -46,9 +46,9 @@ public class PrincipalActivity extends AppCompatActivity {
 
     public void randomize(View v) {
         String name = "randomize";
-        int option;
+        //int option;
         RadioGroup group = (RadioGroup) findViewById(R.id.radiogroup);
-        option = group.getCheckedRadioButtonId();
+        //option = group.getCheckedRadioButtonId();
         switch (option){
             case 1:
                 //Lists select
