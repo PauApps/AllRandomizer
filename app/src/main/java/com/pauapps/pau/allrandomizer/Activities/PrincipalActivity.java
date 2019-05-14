@@ -26,7 +26,8 @@ import com.pauapps.pau.allrandomizer.Utils.DB;
 public class PrincipalActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private Tracker mTracker;
-    int option = 0;
+    //TODO Canviar
+    int option = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,20 +47,16 @@ public class PrincipalActivity extends AppCompatActivity {
 
     public void randomize(View v) {
         String name = "randomize";
-        //int option;
-        RadioGroup group = (RadioGroup) findViewById(R.id.radiogroup);
-        //option = group.getCheckedRadioButtonId();
         switch (option){
-            case 1:
+            case 0:
                 //Lists select
                 startActivity(new Intent(this, ListsActivity.class));
                 break;
-            case 2:
+            case 1:
                 //NumbersActivity select
                 startActivity(new Intent(this, NumbersActivity.class));
                 break;
         }
-        //TODO fer que segons lo que triis se posarà una opció o una altra
         Log.i(TAG, "Setting screen name: " + name);
         mTracker.setScreenName("Image~" + name);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());

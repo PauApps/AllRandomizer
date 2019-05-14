@@ -22,63 +22,104 @@
 
 
         <RelativeLayout
-            android:id="@+id/relative"
+            android:id="@+id/relative1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/title"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/add_number"
+                android:id="@+id/res_number1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:onClick="sum"
+                android:layout_toLeftOf="@+id/number1"
+                android:onClick="res1"
                 android:src="@drawable/random_button" />
 
             <EditText
-                android:id="@+id/number"
+                android:id="@+id/number1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/add_number"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40dp"
-                android:ems="10"
-                android:inputType="number"
+                android:ems="3"
                 android:gravity="center"
-                android:text="@string/_0" />
+                android:inputType="number"
+                android:text="@string/_0"
+                android:textSize="@dimen/number" />
 
             <ImageButton
-                android:id="@+id/res_number"
+                android:id="@+id/add_number1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/number"
-                android:onClick="res"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/number1"
+                android:onClick="sum1"
                 android:src="@drawable/random_button" />
-
-            <ImageButton
-                android:id="@+id/rand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/res_number"
-                android:onClick="rand"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
-                android:src="@drawable/random_button" />
-
-            <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/adView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
-                ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-8428748101355923/8863139563" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative1"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/res_number2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_toLeftOf="@+id/number2"
+                android:onClick="res2"
+                android:src="@drawable/random_button" />
+
+            <EditText
+                android:id="@+id/number2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:ems="3"
+                android:gravity="center"
+                android:inputType="number"
+                android:text="@string/_0"
+                android:textSize="@dimen/number" />
+
+            <ImageButton
+                android:id="@+id/add_number2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/number2"
+                android:onClick="sum2"
+                android:src="@drawable/random_button" />
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/rand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:onClick="rand"
+            android:src="@drawable/random_button" />
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rand"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-8428748101355923/8863139563" />
     </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

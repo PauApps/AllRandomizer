@@ -35,6 +35,7 @@ import java.util.Random;
 public class ListsActivity extends Activity {
     private Tracker mTracker;
     private InterstitialAd mInterstitialAd;
+    private static final String TAG = "ListActivity";
 
     ListView listview;
     String text;
@@ -112,12 +113,12 @@ public class ListsActivity extends Activity {
             AlertDialog alert12 = builder1.create();
             alert12.show();
         } else {
-            if (r.nextInt(4) == 3) {
+            if (r.nextInt(5) == 3) {
 
                 if (mInterstitialAd.isLoaded()) {
                     mInterstitialAd.show();
                 } else {
-                    Log.d("TAG", "The interstitial wasn't loaded yet.");
+                    Log.d(TAG, "The interstitial wasn't loaded yet.");
                 }
             }
 

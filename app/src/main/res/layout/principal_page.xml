@@ -63,7 +63,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp"
-            android:text="@string/develp_by_pauapps" />
+            android:text="@string/develop_by_pauapps" />
 
         <TextView
             android:id="@+id/textViewA"
